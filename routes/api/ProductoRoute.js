@@ -3,8 +3,10 @@ const Sequelize = require('sequelize');
 const {Producto, sequelize} = require('../../database')
 
 router.get('/', async (req, res) =>{
+    const usuarioId = req.usuarioId;
+    console.log(usuarioId)
     const productos = await sequelize.query(
-        'SELECT id_producto, nombreproducto, productos.descripcion, categorias.descripcion, precio, modelo,nombrecategoria, productos.id_categoria, productos.createdAt, productos.updatedAt FROM productos, categorias WHERE categorias.id_categoria = productos.id_categoria', {
+        'SELECT id_producto, nombreproducto, productos.descripcion, categorias.descripcion, precio, modelo, productos.id_usuario,nombrecategoria, productos.id_categoria, productos.createdAt, productos.updatedAt FROM productos, categorias, usuarios WHERE categorias.id_categoria = productos.id_categoria and productos.id_usuario = usuarios.id_usuario and productos.id_usuario ='+usuarioId, {
         model: Producto,
         mapToModel: true // pass true here if you have any mapped fields
       }); 
