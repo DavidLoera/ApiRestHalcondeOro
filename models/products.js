@@ -9,6 +9,7 @@ module.exports = (sequelize, type ) => {
         descripcion: type.STRING,
         precio: type.DOUBLE,
         modelo: type.STRING,
-        id_categoria: type.INTEGER
+        id_categoria: type.INTEGER,
+        id_usuario: type.INTEGER
     })
 }
