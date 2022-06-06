@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize');
+require("dotenv").config();
 
 const ProductoModel   = require('./models/products');
 const CategoriasModel = require('./models/categorias')
 const UsuariosModel   = require('./models/usuarios')
 
 
-const sequelize = new Sequelize('CPInTAB63t', 'CPInTAB63t', 'otONZhNfpH',{
-    host: 'remotemysql.com',
+const sequelize = new Sequelize(`${process.env.USER}`, `${process.env.DATABASE}`, `${process.env.PASS}`,{
+    host: process.env.HOST,
     dialect: 'mysql'
 })
 
