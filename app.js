@@ -13,7 +13,12 @@ app.set('port', process.env.PORT || 3000);
 //Middelware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(cors());
+
+let corsOptions = {
+    origin: '*',
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
 
 //Routes
