@@ -27,7 +27,7 @@ router.post('/signin', async (req, res) =>{
     if(usuario){
         const same = bcrypt.compareSync(req.body.password, usuario.password);
         if(same){
-        res.json({ sucess: createToken(usuario)})
+        res.json({ sucess: createToken(usuario), status: "ok"})
         }else{
         res.json({err: 'Error en usuario y/o contreaseña'})
         }
