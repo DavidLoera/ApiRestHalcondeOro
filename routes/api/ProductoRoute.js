@@ -18,7 +18,7 @@ router.get('/:id', async (req, res) =>{
     const idproducto = req.params.id;
     console.log(usuarioId)
     const productos = await sequelize.query(
-        'SELECT id_producto, nombreproducto, productos.descripcion, categorias.descripcion, precio, modelo, productos.id_usuario,nombrecategoria, productos.id_categoria, productos.createdAt, productos.updatedAt FROM productos, categorias, usuarios WHERE categorias.id_categoria = productos.id_categoria and productos.id_usuario = usuarios.id_usuario and productos.id_usuario ='+usuarioId + 'and id_producto =' + idproducto, {
+        'SELECT id_producto, nombreproducto, productos.descripcion, categorias.descripcion, precio, modelo, productos.id_usuario,nombrecategoria, productos.id_categoria, productos.createdAt, productos.updatedAt FROM productos, categorias, usuarios WHERE categorias.id_categoria = productos.id_categoria and productos.id_usuario = usuarios.id_usuario and productos.id_usuario = '+ usuarioId + ' and id_producto = ' + idproducto, {
         model: Producto,
         mapToModel: true // pass true here if you have any mapped fields
       }); 
